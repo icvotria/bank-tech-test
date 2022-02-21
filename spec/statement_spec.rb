@@ -10,5 +10,7 @@ describe Statement do
     statement.add_transaction(transaction2)
 
     expect(statement.transaction_list.length).to eq 2
+    expect(statement.transaction_list[0][:type]).to eq 'credit'
+    expect(statement.transaction_list[-1][:type]).to eq 'debit'
   end
 end
