@@ -1,21 +1,17 @@
 require 'statement'
+require_relative 'test_helper'
 
 describe Statement do
+  include TestHelper
+
   let(:statement) { Statement.new }
 
   before(:each) do
     transaction1 = double('transaction')
     transaction2 = double('transaction')
 
-    allow(transaction1).to receive(:amount) { 50 }
-    allow(transaction1).to receive(:date) { '20/02/2022' }
-    allow(transaction1).to receive(:type) { 'debit' }
-    allow(transaction1).to receive(:balance) { 50 }
-
-    allow(transaction2).to receive(:amount) { 100 }
-    allow(transaction2).to receive(:date) { '21/02/2022' }
-    allow(transaction2).to receive(:type) { 'credit' }
-    allow(transaction2).to receive(:balance) { 150 }
+    transaction_stub(transaction1, 50, '20/02/2022', 'debit', 50)
+    transaction_stub(transaction2, 100, '21/02/2022', 'credit', 150)
 
     statement.add_transaction(transaction1)
     statement.add_transaction(transaction2)
