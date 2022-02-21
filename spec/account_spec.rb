@@ -12,6 +12,6 @@ describe Account do
   it 'accepts withdrawals' do
     account.withdrawal('50')
 
-    expect(account.balance).to eq -50
+    expect(account.balance).to eq(-50)
   end
 end
