@@ -12,6 +12,6 @@ class Transaction
   private
 
   def transaction_type
-    @amount.to_i.positive? ? @type = 'credit' : @type = 'debit'
+    @amount.to_i.positive? ? 'credit' : 'debit'
   end
 end
