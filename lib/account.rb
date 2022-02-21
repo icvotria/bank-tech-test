@@ -19,6 +19,10 @@ class Account
     add_to_statement(-amount)
   end
 
+  def print_statement
+    @statement.display
+  end
+
   private
 
   def add_to_statement(amount)

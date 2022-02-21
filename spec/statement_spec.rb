@@ -27,8 +27,8 @@ describe Statement do
 
   it 'displays transactions in a nice little form' do
     expect { statement.display }.to output('date || credit || debit || balance
-20/02/2022 || || £50 || £50
-21/02/2022 || £100 || || £150
+20/02/2022 ||  || £50.00 || £50.00
+21/02/2022 || £100.00 ||  || £150.00
 ').to_stdout
   end
 end
