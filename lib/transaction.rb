@@ -1,7 +1,17 @@
-class Transaction
-  attr_reader :date
+require 'date'
 
-  def initialize(date = Date.today)
-    @date = date
+class Transaction
+  attr_reader :date, :type, :amount
+
+  def initialize(amount)
+    @date = Date.today
+    @amount = amount
+    @type = transaction_type
+  end
+
+  private
+
+  def transaction_type
+    @amount.to_i.positive? ? @type = 'credit' : @type = 'debit'
   end
 end
