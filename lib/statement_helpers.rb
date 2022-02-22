@@ -15,9 +15,9 @@ module StatementHelpers
   def transaction_list_formatter
     @transaction_list.map do |transaction|
       [transaction.date,
-      monetiser(transaction.credit),
-      monetiser(transaction.debit),
-      monetiser(transaction.balance)]
+       monetiser(transaction.credit),
+       monetiser(transaction.debit),
+       monetiser(transaction.balance)]
     end
   end
 end
