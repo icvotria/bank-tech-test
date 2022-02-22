@@ -13,11 +13,11 @@ module StatementHelpers
   end
 
   def transaction_list_formatter
-    @transaction_list.each do |transaction|
-      @formatted_transactions << [transaction.date,
-                                  monetiser(transaction.credit),
-                                  monetiser(transaction.debit),
-                                  monetiser(transaction.balance)]
+    @transaction_list.map do |transaction|
+      [transaction.date,
+      monetiser(transaction.credit),
+      monetiser(transaction.debit),
+      monetiser(transaction.balance)]
     end
   end
 end
