@@ -6,8 +6,4 @@ describe Transaction do
   it 'records the date of the transaction' do
     expect(transaction.date).to eq Date.today.strftime('%d/%m/%Y')
   end
-
-  it 'records the type of transaction' do
-    expect(transaction.type).to eq 'credit'
-  end
 end

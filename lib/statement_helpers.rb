@@ -4,7 +4,20 @@ module StatementHelpers
   end
 
   def monetiser(amount)
-    decimal_amount = format('%.2f', amount)
-    "£#{decimal_amount}"
+    if amount.nil?
+      nil
+    else
+      decimal_amount = format('%.2f', amount)
+      "£#{decimal_amount}"
+    end
+  end
+
+  def transaction_list_formatter
+    @transaction_list.each do |transaction|
+      @formatted_transactions << [transaction.date,
+                                  monetiser(transaction.credit),
+                                  monetiser(transaction.debit),
+                                  monetiser(transaction.balance)]
+    end
   end
 end
