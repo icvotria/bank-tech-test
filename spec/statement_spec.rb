@@ -6,7 +6,14 @@ describe Statement do
 
   let(:statement) { Statement.new }
 
-  before(:each) do
+  it 'adds a transaction to the statement' do
+    transaction = double('transaction')
+    transaction_stub(transaction, '20/02/2022', nil, 50, 50)
+
+    expect(statement.add_transaction(transaction).length).to eq 1
+  end
+
+  it 'formats the transaction' do
     transaction1 = double('transaction')
     transaction2 = double('transaction')
 
@@ -15,19 +22,7 @@ describe Statement do
 
     statement.add_transaction(transaction1)
     statement.add_transaction(transaction2)
-  end
 
-  # it 'can return an array of transactions' do
-  #   expect(statement.transaction_list.length).to eq 2
-  #   expect(statement.transaction_list[0].credit).to eq nil
-  #   expect(statement.transaction_list[0].debit).to eq 50
-  #   expect(statement.transaction_list[-1].credit).to eq 100
-  #   expect(statement.transaction_list[-1].debit).to eq nil
-  #   expect(statement.transaction_list[0].balance).to eq 50
-  #   expect(statement.transaction_list[-1].balance).to eq 150
-  # end
-
-  it 'formats the transaction' do
     expect(statement.display).to eq(["21/02/2022 || £100.00 ||  || £150.00\n", "20/02/2022 ||  || £50.00 || £50.00\n"])
   end
 end

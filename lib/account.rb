@@ -1,22 +1,38 @@
 require_relative 'transaction'
 require_relative 'statement'
+require_relative 'error_methods'
 
 class Account
-  attr_reader :balance
+  include ErrorMethods
+  attr_reader :balance, :overdraft
 
-  def initialize
+  def initialize(balance=0, overdraft=0)
     @statement = Statement.new
-    @balance = 0
+    @balance = balance
+    @overdraft = overdraft
   end
 
   def deposit(amount)
-    @balance += amount
-    add_to_statement(amount)
+    begin
+      check_amount(amount)
+
+      @balance += amount
+      add_to_statement(amount)
+    rescue StandardError => error_message
+      puts error_message
+    end
   end
 
   def withdrawal(amount)
-    @balance -= amount
-    add_to_statement(-amount)
+    begin
+      check_amount(amount)
+      check_funds(amount)
+
+      @balance -= amount
+      add_to_statement(-amount)
+    rescue StandardError => error_message
+      puts error_message
+    end
   end
 
   def print_statement
