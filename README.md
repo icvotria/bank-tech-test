@@ -88,6 +88,19 @@ As a user
 So I can see everything at once
 I want all the info to be in a nice little table
 ```
+
+# My approach 
+
+I began by looking at one user story at a time, creating a test for it and then getting the test to pass.
+I started with the account class, and the transaction and statement classes grew as I refactored my code.
+The transaction class started out with more methods, but as I refactored more and more, the class shrunk
+to just the initialize method, and I'm a little worried that the class has become unnecessary.
+
+Once I'd gotten to the point where I felt I'd reached the mvp, I made some checks for edge cases and
+added a couple of extra features; the ability to create an account with an initial balance, and/or
+one with an overdraft. I tried to make sure to test-drive the development of these features, as well 
+as for the edge cases.
+
 # Testing and linting
 
 The app has been built using TDD, and I've tried to be thorough with my tests.
